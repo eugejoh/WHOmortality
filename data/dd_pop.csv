@@ -1,0 +1,34 @@
+Column name,Content,Type
+Country,Country code – see file “Country_codes.zip”,character
+Admin1,"Specified region/Category pertinent to each country– see file “Country_codes.zip”. If this field is blank, data reported refer to the country",character
+Subdiv1,"Category of data – see Annex Table 2 below.  If this field is blank, data reported refer to the country.",character
+Year,Year to which data refer,integer
+Sex,"1 male, 2 female",factor
+Frmat,Age-group format for breakdown of deaths at 0-95+ yrs – see Annex Table 1 below for details,character
+Pop1,Population at all ages,numeric
+Pop2,Population at age 0 year,numeric
+Pop3,Population at age1 year,numeric
+Pop4,Population at age 2 years,numeric
+Pop5,Population at age 3 years,numeric
+Pop6,Population at age 4 years,numeric
+Pop7,Population at age 5-9 years,numeric
+Pop8,Population at age 10-14 years,numeric
+Pop9,Population at age 15-19 years,numeric
+Pop10,Population at age 20-24 years,numeric
+Pop11,Population at age 25-29 years,numeric
+Pop12,Population at age 30-34 years,numeric
+Pop13,Population at age 35-39 years,numeric
+Pop14,Population at age 40-44 years,numeric
+Pop15,Population at age 45-49 years,numeric
+Pop16,Population at age 50-54 years,numeric
+Pop17,Population at age 55-59 years,numeric
+Pop18,Population at age 60-64 years,numeric
+Pop19,Population at age 65-69 years,numeric
+Pop20,Population at age 70-74 years,numeric
+Pop21,Population at age 75-79 years,numeric
+Pop22,Population at age 80-84 years,numeric
+Pop23,Population at age 85-89 years,numeric
+Pop24,Population at age 90-94 years,numeric
+Pop25,Population at age 95 years and over ,numeric
+Pop26,Population at age unspecified,numeric
+Lb,Live births,numeric
