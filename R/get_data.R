@@ -92,9 +92,9 @@ extract_who <- function(path, dest) {
   regex <- paste(who_csv_files, collapse = "|", sep = "|")
   all_zip <- list.files(path, pattern = "\\.zip$", full.names = TRUE)
   extract_these <- all_zip[grepl(regex, all_zip)]
-  sapply(extract_these, function(x) unzip(zipfile = x, exdir = dest))
+  sapply(extract_these, function(x) utils::unzip(zipfile = x, exdir = dest))
   
-    exist_files <- list.files(dest, pattern = paste(paste0(who_files, "$"), collapse = "|"))
+    exist_files <- list.files(dest, pattern = paste(paste0(who_csv_files, "$"), collapse = "|"))
     sapply(exist_files, function(x) {
       oldnames <- x
       newnames <- paste0(x, ".csv")
@@ -212,6 +212,6 @@ snakecase_cols <- function(x) {
   
   names(x) <- tolower(names(x))
   names(x) <- gsub("\\.", "_", names(x))
-  return(out)
+  return(x)
   
 }
