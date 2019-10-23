@@ -1,6 +1,7 @@
 #' Import Data Dictionary for WHO Mortality and Population Tables
 #' 
-#' This function imports the data dictionaries for the mortality and population tables. These were extracted from the documentation word document "Documentation_1May2019.doc".
+#' This function imports the data dictionaries for the mortality and population tables. 
+#' These were extracted from the documentation word document "Documentation_1May2019.doc".
 #'
 #' @param type a single \code{character} specifying to import either the mortality or population data dictionary
 #' @param ... other parameters pass to \code{\link{read_csv}}.
