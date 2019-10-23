@@ -1,0 +1,25 @@
+Package: WHOmortality
+Title: Tools for World Health Organization Mortality Data
+Version: 0.0.0.9
+Authors@R: 
+    person(given = "Eugene",
+           family = "Joh",
+           role = c("aut", "cre"),
+           email = "ejoh@bu.edu")
+Description: This package contains functions to download, extract, 
+    and process raw mortality data files from World Health Organization (WHO) website
+    found at https://www.who.int/healthinfo/statistics/mortality_rawdata/en/.
+License: GPL-3
+Depends:
+    R (>= 3.2.0)
+Imports: 
+    utils,
+    readr,
+    dplyr,
+    tibble,
+    tidyselect
+Suggests:
+    roxygen2
+RoxygenNote: 6.1.1
+Encoding: UTF-8
+LazyData: true
