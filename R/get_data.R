@@ -152,7 +152,7 @@ import_who <- function(path, data = c("mort", "pop", "ccode", "notes")) {
   }
 
   if (data == "pop") {
-    out <- readr::read_csv(file = all_csv[grepl("pop", all_csv)])
+    out <- readr::read_csv(file = all_csv[grepl("pop", all_csv)], col_types = readr::cols(.default = "c"))
   }
   
   if (data == "ccode") {
