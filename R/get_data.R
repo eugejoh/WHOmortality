@@ -3,7 +3,7 @@
 #' This function downloads the raw WHO mortality data based on the links on the webpage \url{https://www.who.int/healthinfo/statistics/mortality_rawdata/en/}
 #'
 #' @param dest a \code{character} file path of the destintation directory to download the .zip files
-#' @param data to specify which files to download, default value downloads the documentation files
+#' @param data to specify which files to download, takes values of "docs", "mort", "pop", "ccode", "all". Default value downloads the documentation files
 #' 
 #' @details The \code{data} parameter allows the user to download a specific set of data files.
 #' The \code{docs} downloads the documentation files associated with the raw WHO mortality data, this includes the "documentation.zip", "notes.zip", and "availability.zip" files
@@ -143,24 +143,35 @@ import_who <- function(path, data = c("mort", "pop", "ccode", "notes")) {
              readr::read_csv(file = x, col_types = readr::cols(.default = "c"))
            })
     
+    if (!all(sapply(mort_l, nrow) == c(1388106, 2378958)))
+      warning("number of rows in each Morticd10 zip file is incorrect")
+    
     vars_intersect <- Reduce(intersect, lapply(mort_l, names))
     vars_setdiff <- Reduce(setdiff, lapply(mort_l, names))
     if (any(length(vars_intersect) != ncol(mort_l[[1]]) | length(vars_setdiff) != 0))
       stop("check that mortality .csv files are correct: column names not consistent")
     
     out <- dplyr::bind_rows(mort_l)
+    if (nrow(out) != 3767064)
+      warning("number of rows for Morticd10_part1 and Morticd10_part2 does not match 3,767,064")
   }
 
   if (data == "pop") {
     out <- readr::read_csv(file = all_csv[grepl("pop", all_csv)], col_types = readr::cols(.default = "c"))
+    if (nrow(out) != 9435) 
+      warning("number of rows for pop.zip does not match 9,435")
   }
   
   if (data == "ccode") {
     out <- readr::read_csv(file = all_csv[grepl("country_codes", all_csv)], col_types = readr::cols(.default = "c"))
+    if (nrow(out) != 227)
+      warning("number of rows for country_codes.zip does not match 227")
   }
   
   if (data == "notes") {
     out <- readr::read_csv(file = all_csv[grepl("notes", all_csv)], col_types = readr::cols(.default = "c"))
+    if (nrow(out) != 89)
+      warning("number of rows for notes.zip does not match 89")
   }
   
   return(out)
