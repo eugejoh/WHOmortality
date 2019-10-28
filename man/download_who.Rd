@@ -9,7 +9,7 @@ download_who(dest, data = c("docs", "mort", "pop", "ccode", "all"))
 \arguments{
 \item{dest}{a \code{character} file path of the destintation directory to download the .zip files}
 
-\item{data}{to specify which files to download, default value downloads the documentation files}
+\item{data}{to specify which files to download, takes values of "docs", "mort", "pop", "ccode", "all". Default value downloads the documentation files}
 }
 \value{
 the same value as the \code{\link[utils]{download.file}}
