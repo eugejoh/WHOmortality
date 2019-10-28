@@ -5,7 +5,7 @@ WHOmortality
 
 <!-- badges: start -->
 <!-- badges: end -->
-The `WHOmortality` R package provides tools to easily download, extract, and import the raw data files found in the World Health Organization's (WHO) Mortality Database. Only the dataset containing the [International Classification of Diease, 10th Revision (ICD-10)](https://icd.who.int/browse10/2016/en) codes.
+The `WHOmortality` R package provides tools to easily download, extract, and import the raw data files found in the World Health Organization's (WHO) Mortality Database. Currently this package only imports the two mortality tables containing the [International Classification of Disease, 10th Revision (ICD-10)](https://icd.who.int/browse10/2016/en) codes.
 
 Installation
 ------------
@@ -43,7 +43,7 @@ list.files(dest_dir, full.names = TRUE)
 Import WHO Raw Files
 --------------------
 
-The `import_who()` allows the user to import select raw files into R. The example below imports the mortality and population data into R from the locally extracted files.
+The `import_who()` allows the user to choose which raw files to import into R. The example below imports the mortality and population data into R from the locally extracted files.
 
 ``` r
 mort_df <- import_who(dest_dir, "mort")
@@ -58,4 +58,5 @@ The data dictionaries for the mortality and population tables found in the conte
 ``` r
 data(dd_mort) #load data dictionary for mortality table
 data(dd_mort) #load data dictionary for population table
+data(dd_icd10) #load data dictionary for mortality table cause of death grouping
 ```
