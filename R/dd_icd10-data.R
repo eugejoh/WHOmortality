@@ -20,6 +20,6 @@
 #' @source \href{https://www.who.int/healthinfo/statistics/mortality_rawdata/en/}{WHO Mortality Database}
 #'
 #' @examples
-#' data(dd_icd10)
+#' data(dd_ic10)
 #' head(dd_icd10)
 "dd_icd10"
