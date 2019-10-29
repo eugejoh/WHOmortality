@@ -1,5 +1,5 @@
 test_that("test valid directory path", {
-  expect_error(download_who("wrong_file_path", data = "mort"))
+  expect_error(download_who(dest = "wrong_file_path", data = "mort"))
 })
 
 path <- file.path("~", "who_mort")
@@ -29,3 +29,18 @@ test_that("dimensions of data dictionary for population", {
   expect_equal(nrow(dd_pop), 33)
 })
 
+test_that("dimensions of data dictionary for ICD-10 codes", {
+  data(dd_icd10)
+  expect_equal(nrow(dd_icd10), 104)
+})
+
+test_that("snake case function named", {
+  data(dd_icd10)
+  names(dd_icd10) <- NULL
+  expect_error(snakecase_cols(dd_icd10), regexp = "is.null")
+})
+
+test_that("snake case function input class", {
+  x <- c("a", "b", "c")
+  expect_error(proc_who_mort(x))
+})
