@@ -4,12 +4,15 @@
 \alias{import_who}
 \title{Import WHO Mortality Data}
 \usage{
-import_who(path, data = c("mort", "pop", "ccode", "notes"))
+import_who(path, data = c("mort", "pop", "ccode", "notes"),
+  proc = TRUE)
 }
 \arguments{
 \item{path}{a \code{character} file path where the extracted .csv WHO files exist}
 
 \item{data}{a \code{character} to specify which files to import into R, must be explicitly defined}
+
+\item{proc}{a \code{logical} to specify whether to automatically modify column \code{class} and convert column names to snakecase.}
 }
 \value{
 a \code{tibble} object of the specified data
@@ -23,6 +26,8 @@ The \code{mort} imports the two ICD-10 mortality csv files, "Morticd10_part1.zip
 The \code{pop} imports the WHO population csv file
 The \code{ccode} imports the country code csv file
 The \code{notes} imports the notes csv file
+
+Fore more details see the docs for \code{\link{proc_who_mort}} and \code{\link{snakecase_cols}}
 }
 \examples{
 \dontrun{

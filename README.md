@@ -17,8 +17,8 @@ You can install the development version of `WHOmortality` from the GitHub reposi
 devtools::install_github("eugejoh/WHOmortality")
 ```
 
-Downloading the Raw Files
--------------------------
+Downloading Raw Files
+---------------------
 
 The `download_who()` function allows the user to download select raw data files and documentation from the [WHO website](https://www.who.int/healthinfo/statistics/mortality_rawdata/en/).
 
@@ -43,7 +43,7 @@ list.files(dest_dir, full.names = TRUE)
 Import WHO Raw Files
 --------------------
 
-The `import_who()` allows the user to choose which raw files to import into R. The example below imports the mortality and population data into R from the locally extracted files.
+The `import_who()` function allows the user to choose which raw files to import into R. The example below imports the mortality and population data into R from the locally extracted files. For the ICD-10 mortality tables (`part1` and `part2`) are automatically combined together after the tables are imported, with a total of 3,767,064 rows. *Note the resulting data.frame requires ~1.1GB of memory*.
 
 ``` r
 mort_df <- import_who(dest_dir, "mort")

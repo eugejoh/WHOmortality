@@ -108,12 +108,15 @@ extract_who <- function(path, dest) {
 #'
 #' @param path a \code{character} file path where the extracted .csv WHO files exist
 #' @param data a \code{character} to specify which files to import into R, must be explicitly defined
+#' @param proc a \code{logical} to specify whether to automatically modify column \code{class} and convert column names to snakecase.
 #' 
 #' @details The \code{data} parameter allows the user to download a specific set of data files.
 #' The \code{mort} imports the two ICD-10 mortality csv files, "Morticd10_part1.zip" and "Morticd10_part2.zip" and combines them into a single \code{tibble} object
 #' The \code{pop} imports the WHO population csv file
 #' The \code{ccode} imports the country code csv file
 #' The \code{notes} imports the notes csv file
+#'
+#' Fore more details see the docs for \code{\link{proc_who_mort}} and \code{\link{snakecase_cols}}
 #'
 #' @return a \code{tibble} object of the specified data
 #' @export
@@ -125,7 +128,7 @@ extract_who <- function(path, dest) {
 #' ccode_df <- import_who(path = getwd(), data = "ccode")
 #' head(ccode_df)
 #' }
-import_who <- function(path, data = c("mort", "pop", "ccode", "notes")) {
+import_who <- function(path, data = c("mort", "pop", "ccode", "notes"), proc = TRUE) {
   stopifnot(length(data) == 1)
   who_csv_files <- c(
     "notes", 
@@ -174,6 +177,10 @@ import_who <- function(path, data = c("mort", "pop", "ccode", "notes")) {
       warning("number of rows for notes.zip does not match 89")
   }
   
+  if (proc) {
+    out <- proc_who_mort(out)
+    out <- snakecase_cols(out)
+  }
   return(out)
 }
 
